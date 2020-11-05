@@ -1,6 +1,6 @@
 {
   "Nickname": "FloraFixer",
   "HideByDefault": true,
-  "OneLineDescription": "Synthesis patcher to fix flora respawning",
+  "OneLineDescription": "Synthesis patcher to fix flora respawning (needs data from nexus)",
   "LongDescription": ""
 }
