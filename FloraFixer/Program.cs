@@ -23,7 +23,7 @@ namespace enchrestrictionremover
         public static void RunPatch(SynthesisState<ISkyrimMod, ISkyrimModGetter> state)
         {
             foreach(var tree in state.LoadOrder.PriorityOrder.OnlyEnabled().Tree().WinningOverrides()) {
-                var otree = tree.GetOrAddAsOverride();
+                var otree = state.PatchMod.Trees.GetOrAddAsOverride(tree);
                 if(otree.VirtualMachineAdapter == null) {
                     otree.VirtualMachineAdapter = new VirtualMachineAdapter();
                 }
@@ -32,7 +32,7 @@ namespace enchrestrictionremover
                 });
             }
             foreach(var flora in state.LoadOrder.PriorityOrder.OnlyEnabled().Flora().WinningOverrides()) {
-                var otree = flora.GetOrAddAsOverride();
+                var otree = state.PatchMod.Florae.GetOrAddAsOverride(flora);;
                 if(otree.VirtualMachineAdapter == null) {
                     otree.VirtualMachineAdapter = new VirtualMachineAdapter();
                 }
