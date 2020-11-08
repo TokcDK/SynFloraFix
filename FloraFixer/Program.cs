@@ -30,7 +30,7 @@ namespace enchrestrictionremover
                 otree.VirtualMachineAdapter.Scripts.Add(new ScriptEntry() {
                     Name = "florafix",
                 });
-                state.PatchMod.Trees.Add(otree);
+                state.PatchMod.Trees.GetOrAddAsOverride(otree);
             }
             foreach(var flora in state.LoadOrder.PriorityOrder.OnlyEnabled().Flora().WinningOverrides()) {
                 var otree = flora.DeepCopy();
@@ -40,7 +40,7 @@ namespace enchrestrictionremover
                 otree.VirtualMachineAdapter.Scripts.Add(new ScriptEntry() {
                     Name = "florafix",
                 });
-                state.PatchMod.Florae.Add(otree);
+                state.PatchMod.Florae.GetOrAddAsOverride(otree);
             }
         }
     }
