@@ -1,6 +1,7 @@
 {
   "Nickname": "FloraFixer",
-  "HideByDefault": false,
+  "Visibility": "Visible",
   "OneLineDescription": "Synthesis patcher to fix flora respawning (needs data from nexus)",
-  "LongDescription": "Nexus Data can be found here: https://www.nexusmods.com/skyrimspecialedition/mods/42057"
+  "LongDescription": "Nexus Data can be found here: https://www.nexusmods.com/skyrimspecialedition/mods/42057",
+  "PreferredAutoVersioning": "Default"
 }
