@@ -2,7 +2,7 @@ using Mutagen.Bethesda;
 using Mutagen.Bethesda.Synthesis;
 using Mutagen.Bethesda.Skyrim;
 
-namespace enchrestrictionremover
+namespace SynFloraFixer
 {
     public class Program
     {
