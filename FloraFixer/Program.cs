@@ -1,3 +1,4 @@
+using System;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Synthesis;
 using Mutagen.Bethesda.Skyrim;
@@ -23,22 +24,24 @@ namespace SynFloraFixer
         public static void RunPatch(SynthesisState<ISkyrimMod, ISkyrimModGetter> state)
         {
             foreach(var tree in state.LoadOrder.PriorityOrder.OnlyEnabled().Tree().WinningOverrides()) {
-                var otree = state.PatchMod.Trees.GetOrAddAsOverride(tree);
-                if(otree.VirtualMachineAdapter == null) {
+                if(tree.VirtualMachineAdapter == null) {
+                    var otree = state.PatchMod.Trees.GetOrAddAsOverride(tree);
+                    Console.WriteLine($"Patching TREE {otree.EditorID}");
                     otree.VirtualMachineAdapter = new VirtualMachineAdapter();
+                    otree.VirtualMachineAdapter.Scripts.Add(new ScriptEntry() {
+                        Name = "florafix",
+                    });
                 }
-                otree.VirtualMachineAdapter.Scripts.Add(new ScriptEntry() {
-                    Name = "florafix",
-                });
             }
             foreach(var flora in state.LoadOrder.PriorityOrder.OnlyEnabled().Flora().WinningOverrides()) {
-                var otree = state.PatchMod.Florae.GetOrAddAsOverride(flora);;
-                if(otree.VirtualMachineAdapter == null) {
+                if(flora.VirtualMachineAdapter == null) {
+                    var otree = state.PatchMod.Florae.GetOrAddAsOverride(flora);;
+                    Console.WriteLine($"Patching FLOR {otree.EditorID}");
                     otree.VirtualMachineAdapter = new VirtualMachineAdapter();
+                    otree.VirtualMachineAdapter.Scripts.Add(new ScriptEntry() {
+                        Name = "florafix",
+                    });
                 }
-                otree.VirtualMachineAdapter.Scripts.Add(new ScriptEntry() {
-                    Name = "florafix",
-                });
             }
         }
     }
