@@ -10,14 +10,10 @@ namespace SynFloraFixer
     {
         public static async Task<int> Main(string[] args)
         {
-            return await SynthesisPipeline.Instance.AddPatch<ISkyrimMod, ISkyrimModGetter>(RunPatch).Run(args, new RunPreferences()
-            {
-                ActionsForEmptyArgs = new RunDefaultPatcher
-                {
-                    IdentifyingModKey = "FloraFixer.esp",
-                    TargetRelease = GameRelease.SkyrimSE
-                }
-            });
+            return await SynthesisPipeline.Instance
+                .AddPatch<ISkyrimMod, ISkyrimModGetter>(RunPatch)
+                .SetTypicalOpen(GameRelease.SkyrimSE, "SynFloraFix.esp")
+                .Run(args);
         }
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
