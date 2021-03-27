@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Synthesis;
 using Mutagen.Bethesda.Skyrim;
+using Noggog;
 
 namespace SynFloraFixer
 {
@@ -18,7 +19,7 @@ namespace SynFloraFixer
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
-            foreach (var tree in state.LoadOrder.PriorityOrder.OnlyEnabled().Tree().WinningOverrides())
+            state.LoadOrder.PriorityOrder.OnlyEnabled().Tree().WinningOverrides().ForEach(tree =>
             {
                 if (tree.VirtualMachineAdapter == null)
                 {
@@ -30,8 +31,8 @@ namespace SynFloraFixer
                         Name = "florafix",
                     });
                 }
-            }
-            foreach (var flora in state.LoadOrder.PriorityOrder.OnlyEnabled().Flora().WinningOverrides())
+            });
+            state.LoadOrder.PriorityOrder.OnlyEnabled().Flora().WinningOverrides().ForEach(flora =>
             {
                 if (flora.VirtualMachineAdapter == null)
                 {
@@ -43,7 +44,7 @@ namespace SynFloraFixer
                         Name = "florafix",
                     });
                 }
-            }
+            });
         }
     }
 }
