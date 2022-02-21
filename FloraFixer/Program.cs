@@ -28,11 +28,10 @@ namespace SynFloraFixer
 
         public static void RunPatch(IPatcherState<ISkyrimMod, ISkyrimModGetter> state)
         {
-            string scriptName = Settings.Value.ScriptName;
             var floraFixScript = new VirtualMachineAdapter();
             floraFixScript.Scripts.Add(new ScriptEntry()
             {
-                Name = scriptName,
+                Name = Settings.Value.ScriptName,
             });
 
             state.LoadOrder.PriorityOrder.OnlyEnabled().Tree().WinningOverrides().ForEach(tree =>
