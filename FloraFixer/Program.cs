@@ -31,7 +31,7 @@ namespace SynFloraFixer
             var floraFixScript = new VirtualMachineAdapter();
             floraFixScript.Scripts.Add(new ScriptEntry()
             {
-                Name = Settings.Value.ScriptName,
+                Name = string.IsNullOrWhiteSpace(Settings.Value.ScriptName) ? "florafix" : Settings.Value.ScriptName,
             });
 
             state.LoadOrder.PriorityOrder.OnlyEnabled().Tree().WinningOverrides().ForEach(tree =>
