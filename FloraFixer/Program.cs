@@ -1,4 +1,4 @@
-using FloraFixer;
+ï»¿using FloraFixer;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.Strings;
@@ -94,8 +94,11 @@ namespace SynFloraFixer
                 return new TranslatedString(Language.English, new Dictionary<Language, string>
                         {
                             { Language.English, "Get:" },
-                            { Language.Russian, "Âçÿòü:" },
-
+                            { Language.Russian, "Ğ’Ğ·ÑÑ‚ÑŒ:" },
+                            { Language.Chinese, "è·å–ï¼š" },
+                            { Language.Spanish, "Obtener:" },
+                            { Language.French, "Obtenir:" },
+                            { Language.German, "Erhalten:" },
                         });
             }
 
